@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang=en>
+	<head>
+	<style>
+	</style>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi"/>
+		<title> Ajax, Php and mysql example </title>
+		
+		</head>
+	<body>
+	<script>
+	function connect(value){
+		
+	   // code for IE6, IE5
+	 if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp =new XMLHttpRequest();
+        } else {// 
+            xmlhttp =new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {//received full server response and check the server response
+      document.getElementById("data").innerHTML=" ";          
+document.getElementById("data").innerHTML=this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "index1.php?id="+value, true);
+        xmlhttp.send();
+	}
+
+	
+	</script>
+	<select name='users' onchange=connect(this.value)>
+		<option value=0> Select an option </option>
+		<option value=1>John</option>
+		<option value=2>Mary</option>
+		<option value=3>peace</option>
+	    <option value=4>Sean</option>
+		<option value=5>Olive</option>
+		<option value=6>Micheal</option>
+		</select>
+	<div id=data>
+	
+	</div>
+	</body>
+	</html>
+	
